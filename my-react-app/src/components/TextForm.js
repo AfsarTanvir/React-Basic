@@ -13,6 +13,10 @@ export default function TextForm(parameters) {
     setText(newText);
   };
 
+  const handleClearClick = () => {
+    setText('');
+  };
+
   const handleOnChange = (event) => {
     console.log("On change");
     setText(event.target.value);
@@ -39,6 +43,9 @@ export default function TextForm(parameters) {
         </button>
         <button className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert to Lowercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+          Clear text
         </button>
       </div>
       <div className="container my-3">
