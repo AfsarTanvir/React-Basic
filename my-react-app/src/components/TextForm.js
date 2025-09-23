@@ -43,13 +43,20 @@ export default function TextForm(parameters) {
   const [text, setText] = useState("");
   return (
     <>
-      <div>
+      <div
+        className="container mx-3"
+        style={{ color: parameters.mode === "dark" ? "white" : "#042743" }}
+      >
         <h1>{parameters.heading}</h1>
-        <div className="container mb-3">
+        <div className="mb-3">
           <textarea
             className="form-control"
             value={text}
             onChange={handleOnChange}
+            style={{
+              backgroundColor: parameters.mode === "dark" ? "grey" : "white",
+              color: parameters.mode === "dark" ? "white" : "#042743",
+            }}
             id="myBox"
             rows="8"
           ></textarea>
@@ -70,7 +77,10 @@ export default function TextForm(parameters) {
           Remove Extra Spaces
         </button>
       </div>
-      <div className="container my-3">
+      <div
+        className="container my-3"
+        style={{ color: parameters.mode === "dark" ? "white" : "#042743" }}
+      >
         <h2>Your text summary</h2>
         <p>
           {text.trim().length
@@ -80,7 +90,11 @@ export default function TextForm(parameters) {
         </p>
         <p>{0.008 * text.split(" ").length} Minutes to read.</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>
+          {text.length > 0
+            ? text
+            : "Enter something in the textbox above to preview it here"}
+        </p>
       </div>
     </>
   );
