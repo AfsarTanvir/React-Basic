@@ -15,7 +15,6 @@ export default function TextForm(parameters) {
     let newText = text.toLowerCase();
     setText(newText);
     parameters.showAlert("Converted to lowercase!", "success");
-    
   };
 
   // Clear The Text
@@ -34,8 +33,8 @@ export default function TextForm(parameters) {
   const handleCopyText = () => {
     var text = document.getElementById("myBox");
     text.select();
-    text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     parameters.showAlert("Copied to Clipboard!", "success");
   };
 
@@ -67,19 +66,39 @@ export default function TextForm(parameters) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button
+          className="btn btn-primary mx-1"
+          disabled={text.length === 0}
+          onClick={handleUpClick}
+        >
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLoClick}>
+        <button
+          className="btn btn-primary mx-1"
+          disabled={text.length === 0}
+          onClick={handleLoClick}
+        >
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button
+          className="btn btn-primary mx-1"
+          disabled={text.length === 0}
+          onClick={handleClearClick}
+        >
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopyText}>
+        <button
+          className="btn btn-primary mx-1"
+          disabled={text.length === 0}
+          onClick={handleCopyText}
+        >
           Copy Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>
+        <button
+          className="btn btn-primary mx-1"
+          disabled={text.length === 0}
+          onClick={handleExtraSpace}
+        >
           Remove Extra Spaces
         </button>
       </div>
@@ -94,7 +113,13 @@ export default function TextForm(parameters) {
             : 0}{" "}
           words and {text.length} characters.
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes to read.</p>
+        <p>
+          {0.008 *
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes to read.
+        </p>
         <h2>Preview</h2>
         <p>
           {text.length > 0
