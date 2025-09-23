@@ -3,26 +3,30 @@ import React, { useState } from "react";
 export default function TextForm(parameters) {
   // Convert To Uppercase
   const handleUpClick = () => {
-    console.log("uppercase was clicked: " + text);
+    // console.log("uppercase was clicked: " + text);
     let newText = text.toUpperCase();
     setText(newText);
+    parameters.showAlert("Converted to uppercase!", "success");
   };
 
   // Convert To Lowercase
   const handleLoClick = () => {
-    console.log("lowercase was clicked: " + text);
+    // console.log("lowercase was clicked: " + text);
     let newText = text.toLowerCase();
     setText(newText);
+    parameters.showAlert("Converted to lowercase!", "success");
+    
   };
 
   // Clear The Text
   const handleClearClick = () => {
     setText("");
+    parameters.showAlert("Text Cleared!", "success");
   };
 
   // On Change
   const handleOnChange = (event) => {
-    console.log("On change");
+    // console.log("On change");
     setText(event.target.value);
   };
 
@@ -32,12 +36,14 @@ export default function TextForm(parameters) {
     text.select();
     text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
+    parameters.showAlert("Copied to Clipboard!", "success");
   };
 
   // Removing Extra Space
   const handleExtraSpace = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    parameters.showAlert("Extra spaces removed!", "success");
   };
 
   const [text, setText] = useState("");
