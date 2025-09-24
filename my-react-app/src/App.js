@@ -1,6 +1,9 @@
 import "./App.css";
 import About from "./components/About";
 import Alert from "./components/Alert";
+import Extra01 from "./components/Extra01";
+import Extra02 from "./components/Extra02";
+import Extra03 from "./components/Extra03";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from "react";
@@ -14,6 +17,7 @@ function App() {
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
+      document.body.style.color = "white";
       showAlert("Dark mode has been enabled", "success");
       // setInterval(() => {
       //   document.title = "TextUtils is Amazing Mode";
@@ -24,6 +28,7 @@ function App() {
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
       showAlert("Light mode has been enabled", "success");
     }
   };
@@ -56,6 +61,12 @@ function App() {
                   mode={mode}
                 />
               }
+            />
+            <Route path="/extra01" element={<Extra01 />} />
+            <Route path="/extra02" element={<Extra02 />} />
+            <Route
+              path="/extra03"
+              element={<Extra03 mode={mode} />}
             />
           </Routes>
         </div>

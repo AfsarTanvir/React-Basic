@@ -49,18 +49,18 @@ export default function Navbar({
               </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/">
-                    Action
+                  <Link className="dropdown-item" to="/extra01">
+                    Extra01
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/">
-                    Another action
+                  <Link className="dropdown-item" to="/extra02">
+                    Extra02
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/">
-                    Something else here
+                  <Link className="dropdown-item" to="/extra03">
+                    Extra03
                   </Link>
                 </li>
               </ul>
